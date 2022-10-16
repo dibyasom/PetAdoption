@@ -31,13 +31,24 @@ DB_HOST=db
 # Hit ctrl+o to save, and ctrl+x to exit editor
 ```
 
+<hr>
+
 ### Install Docker Engine
-<hr>  
 
 Download here, for Mac/Linux/Windows [HERE](https://docs.docker.com/engine/install/)
 
+<hr>
+
+### If you wish to bootstrap the project
+
+#### (Skip this step, as the repo already does has the boilerplate code.)
+
+```bash
+docker-compose run backend sh -c "django-admin startproject pet_adoption"
+```
 
 ### Create a superuser
+
 ```bash
 docker-compose run backend sh -c "python3 manage.py createsuperuser --username <username>"
 # ...

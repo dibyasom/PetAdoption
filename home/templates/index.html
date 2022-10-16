@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <!-- saved from url=(0027)https://ohio.clbthemes.com/ -->
 <html lang="en" class="with-promo">
@@ -10,8 +12,8 @@
 	<meta name="author" content="Dibyasom">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:title" content="Pet adoption website by Diby.">
-	<link rel="stylesheet" href="./main.min.css">
-	<script async="" src="./js(1)"></script>
+	<link rel="stylesheet" href="{% static './main.min.css' %}">
+	<script async="" src="{% static 'js(1)"></script>
 	<script>window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
 		gtag('js', new Date());
@@ -130,14 +132,14 @@
 						<a class="branding-title titles-typo -undash" href="#" rel="home">
 							<div class="logo" style="display: none;">
 								<img class="main-logo light-scheme-logo"
-									src="./Screenshot 2022-10-16 at 12.36.21 PM.png" alt="Logo">
-								<img class="dark-scheme-logo" src="./Screenshot 2022-10-16 at 12.36.21 PM.png"
+									src="{% static 'Screenshot 2022-10-16 at 12.36.21 PM.png' %}" alt="Logo">
+								<img class="dark-scheme-logo" src="{% static 'Screenshot 2022-10-16 at 12.36.21 PM.png' %}"
 									alt="Ohio logo">
 							</div>
 							<div class="logo-sticky" style="display: flex;">
 								<img class="main-logo light-scheme-logo"
-									src="./Screenshot 2022-10-16 at 12.36.21 PM.png" alt="Logo">
-								<img class="dark-scheme-logo" src="./Screenshot 2022-10-16 at 12.36.21 PM.png"
+									src="{% static 'Screenshot 2022-10-16 at 12.36.21 PM.png' %}" alt="Logo">
+								<img class="dark-scheme-logo" src="{% static 'Screenshot 2022-10-16 at 12.36.21 PM.png' %}"
 									alt="Logo">
 							</div>
 						</a>
@@ -314,13 +316,13 @@
 		<div class="preview-stack">
 			<div class="device phone -visible" aria-label="animate">
 				<img loading="lazy" class="frame" style="z-index: 0;"
-					srcset="./—Pngtree—yellow traces of dog footprints_5457794.png 1x, ./—Pngtree—yellow traces of dog footprints_5457794.png 2x"
-					src="./—Pngtree—yellow traces of dog footprints_5457794.png" alt="image">
+					srcset="{% static '—Pngtree—yellow traces of dog footprints_5457794.png' %} 1x, {% static '—Pngtree—yellow traces of dog footprints_5457794.png' %} 2x"
+					src="{% static '—Pngtree—yellow traces of dog footprints_5457794.png' %}" alt="image">
 			</div>
 			<div class="device laptop -visible" aria-label="animate">
 				<img loading="lazy" class="frame" id="onload-img"
-					srcset="./dog-thinking-about-bone.svg 1x, ./dog-thinking-about-bone.svg 2x"
-					src="./dog-thinking-about-bone.svg" alt="image">
+					srcset="{% static 'dog-thinking-about-bone.svg'%} 1x, {% static 'dog-thinking-about-bone.svg'%}"
+					src="{% static 'dog-thinking-about-bone.svg'%}" alt="image">
 			</div>
 		</div>
 	</section>
@@ -461,15 +463,17 @@
 					</div>
 
 					<!-- CARDS START -->
+					{% for dog in listed_for_adoption %}
 					<div class="vc_col-md-4 -spacer40-xs">
 						<div class="l-card -inverse -red aos-init aos-animate" data-tilt="true"
 							data-tilt-perspective="5000" data-aos="fade-up" data-aos-delay="0"
-							style="will-change: transform;">
-							<img loading="lazy" src="./dog1.jpeg" alt="image"
+							style="will-change: transform; height: 25rem !important;">
+							<img loading="lazy" src="/media/{{dog.avatar}}" alt="image"
 								style="border-radius: 10px; height: 100px;">
-							<h4>Look at those eyes, how long can you resist not sharing your food with Rex.</h4>
+							<h5 style="margin-top: 10px;">{{dog.display_name}}, Age/{{dog.age}}</h5>
+							<h4>{{dog.description}}</h4>
 							<a class="button -small -outlined" target="_blank"
-								href="https://demo.clbthemes.com/get_figma">
+								href="/home/application/{{dog.id}}">
 								<i class="icon -left">
 									<svg width="10" height="10" viewBox="0 0 10 10" fill="none"
 										xmlns="http://www.w3.org/2000/svg">
@@ -485,6 +489,7 @@
 							</a>
 						</div>
 					</div>
+					{% endfor %}
 					<!-- CARDS END -->
 				</div>
 			</div>
@@ -656,7 +661,7 @@
 					<input type="hidden" name="lang" value="en">
 				</form>
 			</div>
-			<script src="./scripts.min.js"></script>
+			<script src="{% static 'scripts.min.js' %}"></script>
 </body>
 
 </html>
