@@ -31,8 +31,9 @@ DB_HOST=db
 # Hit ctrl+o to save, and ctrl+x to exit editor
 ```
 
-### Install Docker Engine (
-<hr>
+### Install Docker Engine
+<hr>  
+
 Download here, for Mac/Linux/Windows [HERE](https://docs.docker.com/engine/install/)
 
 
