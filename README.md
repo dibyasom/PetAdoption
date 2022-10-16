@@ -32,9 +32,9 @@ DB_HOST=db
 ```
 
 ### Install Docker Engine (
-```bash
+<hr>
 Download here, for Mac/Linux/Windows [HERE](https://docs.docker.com/engine/install/)
-```
+
 
 ### Create a superuser
 ```bash

@@ -1,0 +1,50 @@
+version: "3.3"
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_NAME}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    # ports:
+    #   - "5432:5432"
+    networks:
+      pet_adoption:
+
+
+  backend:
+    build:
+      context: .
+    environment:
+      - PYTHONUNBUFFERED=1
+      # - DJANGO_SETTINGS_MODULE=pet_adoption.settings.local
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_NAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DEBUG=True
+    volumes:
+      - .:/code:rw
+    ports:
+      - "8080:8080"
+    networks:
+      pet_adoption:
+    depends_on:
+      - db
+      - redis
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      pet_adoption:
+
+
+networks:
+  pet_adoption:
+    driver: bridge
