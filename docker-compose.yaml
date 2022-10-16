@@ -20,7 +20,7 @@ services:
       context: .
     environment:
       - PYTHONUNBUFFERED=1
-      # - DJANGO_SETTINGS_MODULE=pet_adoption.settings.local
+      - DJANGO_SETTINGS_MODULE=pet_adoption.settings.local
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_NAME}
       - DB_PASSWORD=${DB_PASSWORD}
